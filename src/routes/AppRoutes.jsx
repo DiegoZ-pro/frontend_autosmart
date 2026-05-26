@@ -23,6 +23,8 @@ import OrdenesTrabajoList from '../pages/taller/OrdenesTrabajoList/OrdenesTrabaj
 import MiPerfilTaller from '../pages/taller/MiPerfilTaller/MiPerfilTaller';
 import RecepcionVehiculo from '../pages/taller/RecepcionVehiculo/RecepcionVehiculo';
 import RecepcionLaboratorio from '../pages/taller/RecepcionLaboratorio/RecepcionLaboratorio';
+import Cotizaciones from '../pages/taller/Cotizaciones/Cotizaciones';
+import DiagnosticoTecnico from '../pages/taller/DiagnosticoTecnico/DiagnosticoTecnico'
 
 const AppRoutes = () => {
   return (
@@ -71,6 +73,12 @@ const AppRoutes = () => {
         
         {/* Recepción de Laboratorio */}
         <Route path="recepcion-laboratorio" element={<RecepcionLaboratorio />} />
+
+        {/* Diagnostico Tecnico */}
+        <Route path="diagnostico-tecnico" element={<DiagnosticoTecnico />} />
+
+        {/* Cotizaciones */}
+        <Route path="cotizaciones" element={<Cotizaciones />} />
         
         {/* Órdenes de Trabajo */}
         <Route path="ordenes" element={<OrdenesTrabajoList />} />

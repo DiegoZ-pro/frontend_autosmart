@@ -223,7 +223,7 @@ const RecepcionLaboratorio = () => {
         setAlert({ 
           show: true, 
           type: 'success', 
-          message: '✅ Orden de laboratorio creada exitosamente - Formulario listo para nueva recepción' 
+          message: 'Orden de laboratorio creada exitosamente - Formulario listo para nueva recepción' 
         });
         
         setTimeout(() => {

@@ -970,3 +970,124 @@
   background: #FEE2E2;
   color: #991B1B;
 }
+
+/* box de cotización dentro de una orden card */
+.cotizacionBox {
+  margin: 0 0 12px 0;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  background: #eff6ff;
+  overflow: hidden;
+}
+ 
+.cotizacionBoxHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: #dbeafe;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1e40af;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+ 
+.cotizacionBoxBody {
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+ 
+.cotizacionBoxRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+ 
+.cotizacionNum {
+  font-family: monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+ 
+.cotizacionTotal {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1d4ed8;
+}
+ 
+.cotizacionFecha {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+ 
+/* sección de cotización dentro del modal de orden */
+.modalCotizacionSection {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px solid #bfdbfe;
+}
+ 
+.modalCotizacionTitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1d4ed8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 12px 0;
+}
+
+/* fila de botones aceptar/rechazar */
+.cotizacionAcciones {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #bfdbfe;
+}
+ 
+.btnAprobar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: #16a34a;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+ 
+.btnAprobar:hover {
+  background: #15803d;
+}
+ 
+.btnRechazar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: #fff;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+ 
+.btnRechazar:hover {
+  background: #fef2f2;
+}
