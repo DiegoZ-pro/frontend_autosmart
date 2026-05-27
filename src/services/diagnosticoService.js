@@ -95,7 +95,7 @@ const getHistorial = async (ordenId) => {
  */
 const getMecanicos = async () => {
   try {
-    const response = await api.get('/usuarios?rol_id=2');
+    const response = await api.get('/usuarios/mecanicos');
     return response.data;
   } catch (error) {
     throw error.response?.data || { success: false, message: 'Error al obtener mecánicos' };

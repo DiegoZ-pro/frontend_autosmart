@@ -35,12 +35,9 @@ const PrivateRoute = ({ children, allowedRoles = [] }) => {
 
   // Si hay roles específicos permitidos, verificar
   if (allowedRoles.length > 0 && !allowedRoles.includes(user.rol)) {
-    // Redirigir a página de inicio según rol
-    if (user.rol === 'cliente') {
-      return <Navigate to="/" replace />;
-    } else {
-      return <Navigate to="/dashboard" replace />;
-    }
+    if (user.rol === 'cliente') return <Navigate to="/" replace />;
+    if (user.rol === 'mecanico') return <Navigate to="/taller/diagnostico-tecnico" replace />;
+    return <Navigate to="/" replace />;
   }
 
   return children;

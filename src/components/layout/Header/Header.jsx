@@ -50,10 +50,10 @@ const Header = () => {
               onClick={() => setShowUserDropdown(!showUserDropdown)}
             >
               <div className={styles.userAvatar}>
-                {user?.nombre_completo?.charAt(0).toUpperCase() || 'U'}
+                {user?.nombreCompleto?.charAt(0).toUpperCase() || 'U'}
               </div>
               <span className={styles.userName}>
-                {user?.nombre_completo?.split(' ')[0] || 'Usuario'}
+                {user?.nombreCompleto?.split(' ')[0] || 'Usuario'}
               </span>
               <ChevronDown size={16} />
             </button>

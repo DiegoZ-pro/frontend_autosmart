@@ -19,12 +19,14 @@ import MiPerfil from '../pages/cliente/MiPerfil/MiPerfil';
 import MainLayout from '../components/layout/MainLayout/MainLayout';
 
 // Páginas de Taller (Admin/Mecánico)
-import OrdenesTrabajoList from '../pages/taller/OrdenesTrabajoList/OrdenesTrabajoList';
 import MiPerfilTaller from '../pages/taller/MiPerfilTaller/MiPerfilTaller';
 import RecepcionVehiculo from '../pages/taller/RecepcionVehiculo/RecepcionVehiculo';
 import RecepcionLaboratorio from '../pages/taller/RecepcionLaboratorio/RecepcionLaboratorio';
 import Cotizaciones from '../pages/taller/Cotizaciones/Cotizaciones';
 import DiagnosticoTecnico from '../pages/taller/DiagnosticoTecnico/DiagnosticoTecnico'
+import OrdenesTrabajoList from '../pages/taller/OrdenesTrabajoList/OrdenesTrabajoList'
+import KanbanTareas from '../pages/taller/KanbanTareas/KanbanTareas'
+import GestionUsuarios from '../pages/taller/GestionUsuarios/GestionUsuarios'
 
 const AppRoutes = () => {
   return (
@@ -68,26 +70,34 @@ const AppRoutes = () => {
           </PrivateRoute>
         }
       >
-        {/* Recepción de Vehículo */}
-        <Route path="recepcion-vehiculo" element={<RecepcionVehiculo />} />
-        
-        {/* Recepción de Laboratorio */}
-        <Route path="recepcion-laboratorio" element={<RecepcionLaboratorio />} />
+        {/* Solo Admin */}
+        <Route path="recepcion-vehiculo" element={
+          <PrivateRoute allowedRoles={['admin']}><RecepcionVehiculo /></PrivateRoute>
+        } />
+        <Route path="recepcion-laboratorio" element={
+          <PrivateRoute allowedRoles={['admin']}><RecepcionLaboratorio /></PrivateRoute>
+        } />
+        <Route path="cotizaciones" element={
+          <PrivateRoute allowedRoles={['admin']}><Cotizaciones /></PrivateRoute>
+        } />
+        <Route path="ordenes" element={
+          <PrivateRoute allowedRoles={['admin']}><OrdenesTrabajoList /></PrivateRoute>
+        } />
+        <Route path="usuarios" element={
+          <PrivateRoute allowedRoles={['admin']}><GestionUsuarios /></PrivateRoute>
+        } />
 
-        {/* Diagnostico Tecnico */}
+        {/* Admin y Mecánico */}
         <Route path="diagnostico-tecnico" element={<DiagnosticoTecnico />} />
-
-        {/* Cotizaciones */}
-        <Route path="cotizaciones" element={<Cotizaciones />} />
-        
-        {/* Órdenes de Trabajo */}
-        <Route path="ordenes" element={<OrdenesTrabajoList />} />
-        
-        {/* Mi Perfil Taller */}
+        <Route path="kanban" element={<KanbanTareas />} />
         <Route path="mi-perfil" element={<MiPerfilTaller />} />
-        
-        {/* Redirect /taller a /taller/recepcion-vehiculo */}
-        <Route index element={<Navigate to="/taller/recepcion-vehiculo" replace />} />
+
+        {/* Redirect /taller según rol */}
+        <Route index element={
+          <PrivateRoute allowedRoles={['admin']}>
+            <Navigate to="/taller/recepcion-vehiculo" replace />
+          </PrivateRoute>
+        } />
       </Route>
 
       {/* ==================== RUTAS PRIVADAS - CLIENTE ==================== */}

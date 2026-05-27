@@ -8,6 +8,20 @@ import { MENSAJES } from '../utils/constants';
 
 const AuthContext = createContext(null);
 
+// Normaliza el objeto user del backend (snake_case) a camelCase consistente
+const normalizeUser = (raw) => {
+  if (!raw) return null;
+  return {
+    id: raw.id,
+    email: raw.email,
+    nombreCompleto: raw.nombre_completo ?? raw.nombreCompleto ?? '',
+    telefono: raw.telefono ?? '',
+    rol: raw.rol,
+    avatarUrl: raw.avatar_url ?? raw.avatarUrl ?? null,
+    ultimoAcceso: raw.ultimo_acceso ?? raw.ultimoAcceso ?? null,
+  };
+};
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -21,7 +35,7 @@ export const AuthProvider = ({ children }) => {
         const token = localStorage.getItem('autosmart_access_token');
 
         if (storedUser && token) {
-          setUser(JSON.parse(storedUser));
+          setUser(normalizeUser(JSON.parse(storedUser)));
         }
       } catch (err) {
         console.error('Error al cargar usuario:', err);
@@ -44,7 +58,8 @@ export const AuthProvider = ({ children }) => {
 
       const response = await authService.login(email, password);
 
-      const { user, tokens } = response.data;
+      const { user: rawLoginUser, tokens } = response.data;
+      const user = normalizeUser(rawLoginUser);
 
       // Guardar en localStorage
       localStorage.setItem('autosmart_access_token', tokens.accessToken);
@@ -52,7 +67,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('autosmart_user', JSON.stringify(user));
 
       setUser(user);
-      
+
       return { success: true, user };
     } catch (err) {
       console.error('❌ Error en login:', err);
@@ -103,7 +118,8 @@ export const AuthProvider = ({ children }) => {
 
       const response = await authService.register(userData);
 
-      const { user, tokens } = response.data;
+      const { user: rawRegUser, tokens } = response.data;
+      const user = normalizeUser(rawRegUser);
 
       // Guardar en localStorage
       localStorage.setItem('autosmart_access_token', tokens.accessToken);
@@ -168,10 +184,11 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Actualizar usuario
+  // Actualizar usuario (normaliza siempre snake_case → camelCase)
   const updateUser = (updatedUser) => {
-    setUser(updatedUser);
-    localStorage.setItem('autosmart_user', JSON.stringify(updatedUser));
+    const normalized = normalizeUser(updatedUser);
+    setUser(normalized);
+    localStorage.setItem('autosmart_user', JSON.stringify(normalized));
   };
 
   const value = {

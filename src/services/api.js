@@ -69,7 +69,12 @@ api.interceptors.response.use(
       }
     }
 
-    return Promise.reject(error);
+    // Extraer el mensaje real del backend para errores no-401
+    const message = error.response?.data?.message || error.message;
+    const enhancedError = new Error(message);
+    enhancedError.response = error.response;
+    enhancedError.status = error.response?.status;
+    return Promise.reject(enhancedError);
   }
 );
 

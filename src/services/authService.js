@@ -63,10 +63,10 @@ const changePassword = async (oldPassword, newPassword) => {
 };
 
 /**
- * Actualizar perfil de usuario
+ * Actualizar perfil propio (nombre y teléfono)
  */
-const updateProfile = async (userId, userData) => {
-  const response = await api.put(`/usuarios/${userId}`, userData);
+const updateProfile = async (userData) => {
+  const response = await api.put('/auth/profile', userData);
   return response.data;
 };
 

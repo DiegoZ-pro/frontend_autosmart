@@ -44,17 +44,10 @@ const Sidebar = () => {
       { icon: Settings, label: 'Configuración Taller', path: '/taller/configuracion' },
     ],
     mecanico: [
-      { icon: Car, label: 'Recepción Vehículo', path: '/taller/recepcion-vehiculo' },
-      { icon: FlaskConical, label: 'Recepción Laboratorio', path: '/taller/recepcion-laboratorio' },
       { icon: Wrench, label: 'Diagnóstico Técnico', path: '/taller/diagnostico-tecnico' },
-      { icon: FileText, label: 'Cotizaciones', path: '/taller/cotizaciones' },
-      { icon: FileText, label: 'Órdenes de Trabajo', path: '/taller/ordenes' },
       { icon: LayoutDashboard, label: 'Kanban de Tareas', path: '/taller/kanban' },
       { icon: Brain, label: 'Diagnóstico con IA', path: '/taller/diagnostico-ia' },
       { icon: Scan, label: 'Escaneo 3D', path: '/taller/escaneo-3d' },
-      { icon: Users, label: 'Gestión de Usuarios', path: '/taller/usuarios' },
-      { icon: BarChart3, label: 'KPIs Taller', path: '/taller/kpis' },
-      { icon: Settings, label: 'Configuración Taller', path: '/taller/configuracion' },
     ]
   };
 
